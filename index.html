@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth</title>
+    <!-- Tailwind & Daisy Ui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="w-[95%] mx-auto">
+      <h2 class="text-[#4ade80] font-bold text-4xl py-2 text-center">
+        Choose Your Trees
+      </h2>
+
+      <div class="grid grid-cols-12 gap-7">
+        <!-- categories -->
+        <div class="col-span-3">
+          <div
+            class="space-y-2 sticky top-8 bg-white card card-body shadow-2xl rounded-md"
+          >
+            <h2 class="font-bold text-2xl text-center">Categories</h2>
+            <button id="allTreesBtn" class="btn btn-primary w-full">
+              All Trees
+            </button>
+
+            <!-- categories-container -->
+            <div id="categoriesContainer" class="space-y-3">
+              <!-- categories will be dynamically loaded here by JS-->
+            </div>
+          </div>
+        </div>
+
+        <!--trees  -->
+        <div class="col-span-6 bg-white card card-body shadow-2xl">
+          <div
+            id="treesContainer"
+            class="grid grid-cols-1 sm:grid-cols-3 gap-5"
+          >
+            <!-- dynamically card added he  re -->
+          </div>
+
+          <!-- loading spinner -->
+
+          <div
+            id="loadingSpinner"
+            class="h-[60vh] flex hidden justify-center items-center"
+          >
+            <span class="loading loading-dots loading-xl"></span>
+          </div>
+        </div>
+
+        <!-- cart -->
+
+        <div class="bg-white card card-body shadow-2xl col-span-3">
+          <h2 class="font-bold text-3xl mb-1">Cart</h2>
+
+          <div class="space-y-2">
+            <div id="cartContainer" class="space-y-2">
+              <!-- <div class="">
+              </div> -->
+            </div>
+
+            <div id="emptyCartMessage" class="text-center py-4">
+              <p>Your Cart is empty</p>
+              <p>Add trees to get started</p>
+            </div>
+
+            <!-- total amount -->
+            <div
+              class="flex justify-between items-center bg-green-50 p-4 rounded-lg font-bold my-3"
+            >
+              <span>Total:</span>
+              <span id="totalPrice">$0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- product modal details -->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="tree-details-modal.showModal()">open modal</button> -->
+      <dialog id="tree-details-modal" class="modal">
+        <div class="modal-box">
+          <!-- modal header with close button -->
+          <div class="flex justify-between items-start mb-4">
+            <h3 id="modalTitle" class="font-bold text-2xl text-green-700">
+              Tree Details
+            </h3>
+            <button
+              class="btn btn-sm btn-circle btn-ghost"
+              onclick="document.getElementById('tree-details-modal').close()"
+            >
+              X
+            </button>
+          </div>
+          <!-- modal content -->
+          <div class="gap-6">
+            <!-- plant image -->
+            <img
+              id="modalImage"
+              src=""
+              alt="plant"
+              class="w-full !h-[250px] object-cover rounded mb-12"
+            />
+            <!-- plant details -->
+            <div>
+              <p class="text-sm text-gray-500 mb-2">
+                <span class="font-bold">Category:</span>
+                <span id="modalCategory" class="badge badge-success"></span>
+              </p>
+              <p class="text-sm text-gray-600 mb-4">
+                <span id="modalDescription"></span>
+              </p>
+
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-3xl font-bold text-green-600"
+                  >Price: $<span id="modalPrice">0</span></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+    <!-- script.js -->
+    <script src="./script.js"></script>
+  </body>
+</html>
