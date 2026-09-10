@@ -84,7 +84,7 @@ async function loadTrees() {
 function displayTrees(trees) {
   trees.forEach((tree) => {
     const card = document.createElement("div");
-    card.className = "card bg-white shadow-sm";
+    card.className = `card bg-white shadow-sm border-b-2 ${tree.price>500?"border-red-500":"border-green-500"}`;
     card.innerHTML = `
     <figure>
                 <img onClick="openTreeModal(${tree.id})"
@@ -101,7 +101,7 @@ function displayTrees(trees) {
                 </p>
                 <div class="badge badge-success badge-outline">${tree.category}</div>
                 <div class="flex justify-between items-center">
-                  <h2 class="text-xl font-bold text-[#4ade80]">$${tree.price}</h2>
+                  <h2 class="text-xl font-bold ${tree.price>500 ? "text-red-500":"text-[#4ade80]"}" >$${tree.price}</h2>
                   <button class="btn btn-primary" onClick="addToCart(${tree.id},'${tree.name}',${tree.price})">Cart</button>
                 </div>
               </div>
